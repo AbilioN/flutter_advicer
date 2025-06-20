@@ -9,4 +9,6 @@ class ThemeService extends ChangeNotifier {
     _themeMode = _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
+
+  bool get isDarkModeOn => _themeMode == ThemeMode.dark;
 }

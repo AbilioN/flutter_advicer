@@ -1,4 +1,5 @@
 import 'package:advicer/3_application/core/services/theme_service.dart';
+import 'package:advicer/3_application/pages/advice/advice_page.dart';
 import 'package:advicer/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,8 +16,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.lightTheme,
+
+    return Consumer<ThemeService>(
+      builder: (context, themeService, child) {
+        return MaterialApp(
+          themeMode: themeService.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          home: const AdvicePage(),
+        );
+      },
     );
+
   }
 }
